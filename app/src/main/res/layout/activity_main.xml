@@ -22,6 +22,7 @@
         android:id="@+id/rg1"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:background="@drawable/back"
         android:textSize="25dp"
         android:checked="true"
         android:button="@null"
@@ -31,6 +32,7 @@
         android:id="@+id/rg2"
         android:textSize="25dp"
         android:layout_width="0dp"
+        android:background="@drawable/back"
         android:layout_weight="1"
         android:button="@null"
         android:text="分类"
@@ -40,6 +42,7 @@
         android:textSize="25dp"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:background="@drawable/back"
         android:button="@null"
         android:text="发现"
         android:layout_height="match_parent" />
@@ -48,6 +51,7 @@
         android:textSize="25dp"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:background="@drawable/back"
         android:button="@null"
         android:text="购物车"
         android:layout_height="match_parent" />
@@ -56,6 +60,7 @@
         android:textSize="25dp"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:background="@drawable/back"
         android:button="@null"
         android:text="我的"
         android:layout_height="match_parent" />

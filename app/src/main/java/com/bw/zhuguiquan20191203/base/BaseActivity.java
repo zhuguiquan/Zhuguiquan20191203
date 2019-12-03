@@ -3,7 +3,11 @@ package com.bw.zhuguiquan20191203.base;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
+/**
+ * DateTime:2019/12/3 0003
+ * author:朱贵全(Administrator)
+ * function:
+ */
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override

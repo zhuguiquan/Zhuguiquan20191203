@@ -35,14 +35,16 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        //找控件
         viewPager = findViewById(R.id.vp);
         radioGroup = findViewById(R.id.rg);
+        //创建添加fragment
         fragmentList.add(new OtherFragment());
         fragmentList.add(new FenleiFragment());
         fragmentList.add(new FaxianFragment());
         fragmentList.add(new ShopingCartFragment());
         fragmentList.add(new MyFragment());
-
+     //设置适配器
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @NonNull
             @Override
@@ -55,6 +57,7 @@ public class MainActivity extends BaseActivity {
                 return fragmentList.size();
             }
         });
+        //联动
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -63,6 +66,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+                //默认选中
                 radioGroup.check(radioGroup.getChildAt(position).getId());
 
             }
@@ -100,5 +104,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int layoutId() {
         return R.layout.activity_main;
+    }
+    //跳转需要用的选中方法
+    public void shouye(){
+        viewPager.setCurrentItem(0);
     }
 }

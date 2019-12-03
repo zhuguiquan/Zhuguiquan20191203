@@ -25,9 +25,12 @@ public class OtherFragment extends BaseFragment {
 
     @Override
     protected void initView(View inflate) {
+        //找控件
         textView = inflate.findViewById(R.id.other_text);
         imageView = inflate.findViewById(R.id.other_img);
+        //判断有网无网
         if(NetUtil.getInstance().hanNet(getContext())){
+            //隐藏显示
             textView.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.GONE);
         }else{

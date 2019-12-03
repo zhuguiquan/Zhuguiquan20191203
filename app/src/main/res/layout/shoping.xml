@@ -2,8 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:text="哈哈哈"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    <ImageView
+        android:background="@mipmap/gg"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+<Button
+    android:text="去购物"
+    android:id="@+id/bt"
+    android:layout_marginLeft="150dp"
+
+    android:layout_width="120dp"
+    android:layout_height="80dp" />
+    <GridView
+        android:id="@+id/gv"
+        android:numColumns="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></GridView>
 </LinearLayout>

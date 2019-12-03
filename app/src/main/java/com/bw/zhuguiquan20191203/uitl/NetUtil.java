@@ -25,6 +25,7 @@ import java.net.URLConnection;
  * function:
  */
 public class NetUtil {
+    //单例模式
     private static NetUtil netUtil=new NetUtil();
 
     private NetUtil() {
@@ -34,6 +35,7 @@ public class NetUtil {
         return netUtil;
     }
     @SuppressLint("StaticFieldLeak")
+    //解析数据的方法
     public void getJson(final String str, final MyCallBack myCallBack){
         new AsyncTask<Void, Void, String>() {
             @Override
@@ -42,6 +44,7 @@ public class NetUtil {
                   myCallBack.onError(new Exception("请求失败"));
               }else{
                   myCallBack.ongetjson(value);
+                  Log.i("xxx",value);
               }
             }
 
@@ -52,11 +55,15 @@ public class NetUtil {
                 try {
                     URL url = new URL(str);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    //设置get方式
                     urlConnection.setRequestMethod("GET");
+                    //设置时间
                     urlConnection.setReadTimeout(5000);
                     urlConnection.setConnectTimeout(5000);
                     urlConnection.connect();
+                    //判断结果码
                     if (urlConnection.getResponseCode()==200) {
+                        //获取流
                          inputStream = urlConnection.getInputStream();
                          json = orString(inputStream);
                     }else{
@@ -67,6 +74,7 @@ public class NetUtil {
                 }finally {
                     if (inputStream != null) {
                         try {
+                            //关闭流
                             inputStream.close();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -79,6 +87,7 @@ public class NetUtil {
     }
 
     private String orString(InputStream inputStream) throws IOException {
+        //创建数组
         byte[] bytes = new byte[1024];
         int len=-1;
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
@@ -90,10 +99,12 @@ public class NetUtil {
         return s;
     }
     @SuppressLint("StaticFieldLeak")
+    //照片的方法
     public void getPhoto(final String sr, final ImageView imageView){
         new AsyncTask<Void, Void, Bitmap>() {
             @Override
             protected void onPostExecute(Bitmap bitmap) {
+                //返回
                imageView.setImageBitmap(bitmap);
             }
 
@@ -104,11 +115,15 @@ public class NetUtil {
                 try {
                     URL url = new URL(sr);
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    //设置get方式
                     urlConnection.setRequestMethod("GET");
+                    //设置时间
                     urlConnection.setReadTimeout(5000);
                     urlConnection.setConnectTimeout(5000);
                     urlConnection.connect();
+                    //判断结果码
                     if (urlConnection.getResponseCode()==200) {
+                        //获取流
                         inputStream = urlConnection.getInputStream();
                          bitmap = orBitMap(inputStream);
                     }else{
@@ -119,6 +134,7 @@ public class NetUtil {
                 }finally {
                     if (inputStream != null) {
                         try {
+                            //关闭流
                             inputStream.close();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -133,6 +149,7 @@ public class NetUtil {
     private Bitmap orBitMap(InputStream inputStream) {
         return BitmapFactory.decodeStream(inputStream);
     }
+    //判断有网无网
     public boolean hanNet(Context context){
         ConnectivityManager systemService = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = systemService.getActiveNetworkInfo();
@@ -142,7 +159,7 @@ public class NetUtil {
             return false;
         }
     }
-
+//接口
     public interface MyCallBack{
         void ongetjson(String json);
         void onError(Throwable throwable);
